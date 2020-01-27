@@ -2,20 +2,21 @@ import java.util.*;
 import java.io.*;
 
 class Prog {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws IOException {
         BBStructure str = new BBStructure();
         String st;
+        int line = 0;
         String[] sentence;
         FileReader file = new FileReader("input.asm");
         str.br = new BufferedReader(file);
         while((st = str.br.readLine()) != null) {
+            line++;
             sentence = st.split(" ");
             for (String word: sentence) {
+                System.out.println(sentence[0]);
                 if (word.contains(",")) {
                     String[] arr = word.split(",");
-                    for (String a: arr) {
-                        System.out.println(a);
-                    }
+                }
 
                 } else {
                     System.out.println(word);
@@ -26,8 +27,8 @@ class Prog {
 }
 
 class BBStructure {
-    public HashMap<Integer, Integer> kpdtab = new HashMap<Integer, Integer>();
-    public HashMap<Integer, Integer> pntab = new HashMap<Integer, Integer>();
+    public HashMap<String, Integer> kpdtab = new HashMap<Integer, Integer>();
+    public HashMap<String, Integer> pntab = new HashMap<Integer, Integer>();
     public BufferedReader br;
 }
 

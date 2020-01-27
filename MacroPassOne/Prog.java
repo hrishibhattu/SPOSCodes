@@ -23,8 +23,12 @@ class Prog {
                             mnt.kpdtp += 1;
                             str.kpdtab.put(ind[0], ind[1]);
                         } else {
-                            mnt.pp += 1;
-                            str.pntab.put(individual, mnt.pp);
+                            if (str.pntab.containsKey(individual)) {
+
+                            } else {
+                                mnt.pp += 1;
+                                str.pntab.put(individual, mnt.pp);
+                            }
                         }
                     }
 
@@ -33,6 +37,7 @@ class Prog {
                 }
             }
         }
+        System.out.println(str.pntab);
     }
 }
 
@@ -49,7 +54,7 @@ class MNT {
     MNT() {
         this.name = name;
         this.kp = kp;
-        this.pp = pp;
+        this.pp = 0;
         this.kpdtp = kpdtp;
         this.mdtp = mdtp;
     } 

@@ -27,25 +27,21 @@ class Prog {
                                 str.kpdtab.put(ind[0], ind[1]);
                             } else {
                                 if (str.pntab.containsKey(individual)) {
-
                                 } else {
                                     mnt.pp += 1;
                                     str.pntab.put(individual, mnt.pp);
                                 }
                             }
                         }
-
                     } else {
                     //Nothing
                     }
-
                 }
             
-
             }
-    }
+        }
         System.out.println(str.pntab);
-}
+    }
 }
 
 class BBStructure {

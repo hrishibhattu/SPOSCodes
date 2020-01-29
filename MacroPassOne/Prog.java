@@ -6,7 +6,7 @@ class Prog {
         BBStructure str = new BBStructure();
         String st;
         MNT mnt = new MNT();
-        int line = 0;
+        int line = 0, countl = 0;
         String[] sentence;
         FileReader file = new FileReader("input.asm");
         str.br = new BufferedReader(file);
@@ -14,31 +14,38 @@ class Prog {
             line++;
             sentence = st.split(" ");
             System.out.println(sentence[0]);
-            for (String word: sentence) {
-                if (word.contains(",")) {
-                    String[] arr = word.split(",");
-                    for (String individual: arr) {
-                        if (individual.contains("=")) {
-                            String[] ind = individual.split("=");
-                            mnt.kpdtp += 1;
-                            str.kpdtab.put(ind[0], ind[1]);
-                        } else {
-                            if (str.pntab.containsKey(individual)) {
-
+            if (sentence[0] == "MACRO") {
+                String paramSent = str.br.readLine();
+                String[] paramSent1 = paramSent.split(" ");
+                for (String word: paramSent1) {
+                    if (word.contains(",")) {
+                        String[] arr = word.split(",");
+                        for (String individual: arr) {
+                            if (individual.contains("=")) {
+                                String[] ind = individual.split("=");
+                                mnt.kpdtp += 1;
+                                str.kpdtab.put(ind[0], ind[1]);
                             } else {
-                                mnt.pp += 1;
-                                str.pntab.put(individual, mnt.pp);
+                                if (str.pntab.containsKey(individual)) {
+
+                                } else {
+                                    mnt.pp += 1;
+                                    str.pntab.put(individual, mnt.pp);
+                                }
                             }
                         }
+
+                    } else {
+                    //Nothing
                     }
 
-                } else {
-                    //Nothing
                 }
+            
+
             }
-        }
-        System.out.println(str.pntab);
     }
+        System.out.println(str.pntab);
+}
 }
 
 class BBStructure {

@@ -37,10 +37,9 @@ class Prog {
                     //Nothing
                     }
                 }
-            
             }
         }
-        System.out.println(str.pntab);
+        System.out.println(str.kpdtab);
     }
 }
 

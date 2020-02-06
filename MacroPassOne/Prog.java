@@ -4,7 +4,18 @@ import java.io.*;
 class Prog {
     public static void main(String[] args) throws IOException {
         BBStructure str = new BBStructure();
+            }
+}
+
+class BBStructure {
+    ArrayList<MntEntry> mnt;
+    public HashMap<String, String> kpdtab = new HashMap<String, String>();
+    public HashMap<String, Integer> pntab = new HashMap<String, Integer>();
+    public BufferedReader br;
+
+    void parse() {
         String st;
+        Boolean isname = false;
         MNT mnt = new MNT();
         int line = 0, countl = 0;
         String[] sentence;
@@ -14,7 +25,10 @@ class Prog {
             line++;
             sentence = st.split(" ");
             System.out.println(sentence[0]);
+
+            // if line contains MACRO then next line will go into MNT
             if (sentence[0] == "MACRO") {
+                isname = true;
                 String paramSent = str.br.readLine();
                 String[] paramSent1 = paramSent.split(" ");
                 for (String word: paramSent1) {
@@ -39,14 +53,9 @@ class Prog {
                 }
             }
         }
-        System.out.println(str.kpdtab);
-    }
-}
 
-class BBStructure {
-    public HashMap<String, String> kpdtab = new HashMap<String, String>();
-    public HashMap<String, Integer> pntab = new HashMap<String, Integer>();
-    public BufferedReader br;
+
+    }
 }
 
 class MNT {
